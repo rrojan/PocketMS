@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PocketMS - Instant PocketBase CMS 
+
+Instantly create user-facing permissioned CMS from PocketBase! 🚀
+
+Just:
+1. Create a `permissions: string` column in your PocketBase `users` collection
+2. Generate a typescript schema from your PocketBase DB
+3. Import the generated type file through the setup UI
+4. You now have a fully functioning CMS
+
+## Goals
+- [ ] **Autogenerate an entire CMS**: Create a CMS from your PocketBase schema based on [Pocketbase Typegen](https://github.com/patmood/pocketbase-typegen)
+- [ ] **Authentication**: Login for users and users management for admin
+- [ ] **User Permissions** - display/hide links and allow/block access to page based on permissions
+- [ ] **Allow configuration** (show/hide fields, order of inputs) of pages based on `pocketms.config.ts`
+
+## Additional Goals
+- [ ] Allow **SEO** / metadata management directly from CMS
+- [ ] Analytics
+- [ ] Localization
+
+## Basic Stack
+- NextJS 14
+- Tailwind
+- NextUI
+- Pocketbase Typegen
+- Pocketbase SDK
+- Zod
+
+## Gameplan:
+- Implement PocketBase auth
+- Import pocketbase types from Pocketbase Typegen using the `Setup` UI
+- Use a global page `[...pathname]/page.tsx` to catch all segments
+- Implement dashboard & three page types: `List`, `Create`, `Update` with `Delete` option on List and Update
+- Fully based on NextJS 14. **Async React Server Components + Server Actions + Revalidation + Suspense**
+
+### List
+- Display a list of 10 records
+- Pagination
+- Sorting
+- Search
+- Columns can be defined in the `pocketms.config.ts` file
+
+### Create
+- Form with the collection's fields with a fitting input element
+- Form elements display/hide, order and other configuration based on `pocketms.config.ts`
+- Form validation
+
+## Update
+- Form with the collection's fields with a fitting input element
+- Form elements display/hide, order and other configuration based on `pocketms.config.ts`
+- Form validation
+- Form default values from existing record
+
+## Delete
+- Delete server action triggered on button click on `List` or `Update` page
+
 
 ## Getting Started
 
-First, run the development server:
+Tun the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
