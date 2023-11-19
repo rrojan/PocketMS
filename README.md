@@ -1,4 +1,4 @@
-# PocketMS - Instant PocketBase CMS 
+# PocketMS - Instant PocketBase CMS 🚀
 
 Instantly create user-facing permissioned CMS from PocketBase! 🚀
 
